@@ -15,12 +15,13 @@ const fs = require('fs');
 
 // postcss plugins
 const autoprefixer = require('autoprefixer');
+const tailwindcss = require('tailwindcss');
 const colorFunction = require('postcss-color-mod-function');
 const cssnano = require('cssnano');
 const easyimport = require('postcss-easy-import');
 
-const REPO = 'TryGhost/Casper';
-const REPO_READONLY = 'TryGhost/Casper';
+const REPO = 'kaxline/journodao-ghost-theme';
+const REPO_READONLY = 'kaxline/journodao-ghost-theme';
 const CHANGELOG_PATH = path.join(process.cwd(), '.', 'changelog.md');
 
 function serve(done) {
@@ -50,6 +51,7 @@ function css(done) {
         postcss([
             easyimport,
             colorFunction(),
+            tailwindcss(),
             autoprefixer(),
             cssnano()
         ]),
@@ -90,7 +92,7 @@ function zipper(done) {
 }
 
 const cssWatcher = () => watch('assets/css/**', css);
-const hbsWatcher = () => watch(['*.hbs', 'partials/**/*.hbs'], hbs);
+const hbsWatcher = () => watch(['*.hbs', 'partials/**/*.hbs'], hbs, js, css);
 const watcher = parallel(cssWatcher, hbsWatcher);
 const build = series(css, js);
 
@@ -129,7 +131,7 @@ exports.release = async () => {
         const compatibleWithGhost = result.compatibleWithGhost;
 
         const releasesResponse = await releaseUtils.releases.get({
-            userAgent: 'Casper',
+            userAgent: 'JournoDAO Ghost Theme',
             uri: `https://api.github.com/repos/${REPO_READONLY}/releases`
         });
 
@@ -159,7 +161,7 @@ exports.release = async () => {
             preRelease: false,
             tagName: 'v' + newVersion,
             releaseName: newVersion,
-            userAgent: 'Casper',
+            userAgent: 'JournoDAO Ghost Theme',
             uri: `https://api.github.com/repos/${REPO}/releases`,
             github: {
                 token: githubToken

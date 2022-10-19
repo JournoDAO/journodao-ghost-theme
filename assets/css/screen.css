@@ -33,6 +33,8 @@ production stylesheet in assets/built/screen.css
 :root {
 
     /* Colours */
+    --color-lightorange: #fff7eb;
+    --color-darkorange: #ff6600;
     --color-green: #a4d037;
     --color-yellow: #fecd35;
     --color-red: #f05230;
@@ -52,8 +54,8 @@ production stylesheet in assets/built/screen.css
      */
 
     /* Fonts */
-    --font-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-    --font-serif: Georgia, Times, serif;
+    --font-sans-serif: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    --font-serif: RobotoSlab, Georgia, Times, serif;
     --font-mono: Menlo, Courier, monospace;
 
 }
@@ -92,7 +94,6 @@ production stylesheet in assets/built/screen.css
 .site-header {
     position: relative;
     color: #fff;
-    background: var(--ghost-accent-color);
 }
 
 .site-header-cover {
@@ -158,7 +159,6 @@ production stylesheet in assets/built/screen.css
     font-size: 2.5rem;
     font-weight: 400;
     color: #fff;
-    background: var(--ghost-accent-color);
 }
 
 .site-header-content.large {
@@ -174,8 +174,7 @@ production stylesheet in assets/built/screen.css
     padding: 1vmin 4vmin;
     font-size: 1.6rem;
     line-height: 1.3em;
-    color: #fff;
-    background: var(--ghost-accent-color);
+    color: var(--color-darkgrey);
 }
 
 .gh-head a {
@@ -294,12 +293,12 @@ production stylesheet in assets/built/screen.css
 .gh-social svg {
     height: 22px;
     width: 22px;
-    fill: #fff;
+    fill: var(--color-darkgrey);
 }
 
 .gh-social-facebook svg {
-    height: 20px;
-    width: 20px;
+    height: 1.2rem;
+    width: 1.2rem;
 }
 
 a.gh-head-button {
@@ -452,7 +451,7 @@ body:not(.gh-head-open) .gh-burger:hover .gh-burger-inner::after {
         align-items: center;
     }
     #gh-head .gh-head-actions {
-        padding: 20px 0;
+        padding: 1.2rem 0;
         justify-content: center;
         text-align: left;
     }
@@ -493,7 +492,7 @@ body:not(.gh-head-open) .gh-burger:hover .gh-burger-inner::after {
     }
 }
 
-.home-template .gh-head.has-cover {
+.home-template .gh-head.has-cover, .post-template .gh-head.has-cover {
     position: absolute;
     top: 0;
     right: 0;
@@ -501,18 +500,18 @@ body:not(.gh-head-open) .gh-burger:hover .gh-burger-inner::after {
     z-index: 2000;
 }
 
-.home-template .gh-head.has-cover {
+.home-template .gh-head.has-cover, .post-template .gh-head.has-cover {
     background: transparent;
 }
 
-.home-template.gh-head-open .gh-head {
-    background: var(--ghost-accent-color);
+.home-template.gh-head-open .gh-head, .post-template.gh-head-open .gh-head {
+    background: var(--color-lightorange);
 }
 
-.home-template .gh-head.has-cover .gh-head-logo {
+.home-template .gh-head.has-cover .gh-head-logo, .post-template .gh-head.has-cover .gh-head-logo {
     display: none;
 }
-.home-template .gh-head.has-cover .gh-head-menu {
+.home-template .gh-head.has-cover .gh-head-menu, .post-template .gh-head.has-cover .gh-head-menu {
     margin-left: -2.5vmin;
 }
 
@@ -551,7 +550,7 @@ body:not(.gh-head-open) .gh-burger:hover .gh-burger-inner::after {
     flex: 1 1 301px;
     display: flex;
     flex-direction: column;
-    min-height: 220px;
+    min-height: 21.2rem;
     background-size: cover;
     word-break: break-word;
 }
@@ -588,7 +587,7 @@ body:not(.gh-head-open) .gh-burger:hover .gh-burger-inner::after {
 }
 
 .post-card-header {
-    margin: 20px 0 0;
+    margin: 1.2rem 0 0;
 }
 
 .post-feed .no-image .post-card-content-link {
@@ -609,8 +608,6 @@ body:not(.gh-head-open) .gh-burger:hover .gh-burger-inner::after {
 }
 
 .post-card-title {
-    margin: 0 0 0.4em;
-    font-size: 2.4rem;
     transition: color 0.2s ease-in-out;
 }
 
@@ -841,10 +838,6 @@ make sure this only happens on large viewports / desktop-ish devices.
 
 
 @media (max-width: 500px) {
-    .post-card-title {
-        font-size: 1.9rem;
-    }
-
     .post-card-excerpt {
         font-size: 1.6rem;
     }
@@ -855,12 +848,12 @@ make sure this only happens on large viewports / desktop-ish devices.
 /* ---------------------------------------------------------- */
 
 .article {
-    padding: 8vmin 0;
+    padding: 2vmin 0;
     word-break: break-word;
 }
 
 .article-header {
-    padding: 0 0 6vmin 0;
+    padding: 0 0 4vmin 0;
 }
 
 .article-tag {
@@ -881,6 +874,7 @@ make sure this only happens on large viewports / desktop-ish devices.
 }
 
 .article-title {
+    text-align: center;
     color: color-mod(var(--color-darkgrey) l(-5%));
 }
 
@@ -898,7 +892,6 @@ make sure this only happens on large viewports / desktop-ish devices.
 .gh-canvas .article-image {
     grid-column: wide-start / wide-end;
     width: 100%;
-    margin: 6vmin 0 0;
 }
 
 .image-full .article-image {
@@ -920,6 +913,10 @@ make sure this only happens on large viewports / desktop-ish devices.
     .article-excerpt {
         font-size: 1.8rem;
     }
+
+    .article-header {
+        padding: 0 0 4rem 0;
+    }
 }
 
 /* -------- */
@@ -939,7 +936,7 @@ use it for applying any other styles. */
             [wide-start]
             minmax(auto, 240px)
                 [main-start]
-                    min(720px, calc(100% - 8vw))
+                    min(71.2rem, calc(100% - 8vw))
                 [main-end]
             minmax(auto, 240px)
             [wide-end]
@@ -1003,11 +1000,11 @@ is the very first element in the post content */
 .gh-content > hr,
 .gh-content > blockquote {
     position: relative;
-    margin-top: 6vmin;
+    margin-top: 4vmin;
 }
 .gh-content > hr + *,
 .gh-content > blockquote + * {
-    margin-top: 6vmin !important;
+    margin-top: 4vmin !important;
 }
 
 /* Now the content typography styles */
@@ -1106,7 +1103,7 @@ is the very first element in the post content */
 
 .gh-content pre {
     overflow: auto;
-    padding: 16px 20px;
+    padding: 16px 1.2rem;
     color: var(--color-wash);
     font-size: 1.4rem;
     line-height: 1.5em;
@@ -1151,11 +1148,11 @@ make sure they look good, and are given a bit of extra spacing. */
 /* Add extra margin before/after any cards,
 except for when immediately preceeded by a heading */
 .gh-content :not(.kg-card):not([id]) + .kg-card {
-    margin-top: 6vmin;
+    margin-top: 4vmin;
     margin-bottom: 0;
 }
 .gh-content .kg-card + :not(.kg-card) {
-    margin-top: 6vmin;
+    margin-top: 4vmin;
     margin-bottom: 0;
 }
 
@@ -1221,14 +1218,14 @@ figcaption a {
 
 /* Highly specific styles for traditional Instagram embeds */
 iframe.instagram-media {
-    margin-top: 6vmin !important;
+    margin-top: 4vmin !important;
     margin-left: auto !important;
     margin-right: auto !important;
     margin-bottom: 0 !important;
 }
 
 iframe.instagram-media + script + :not([id]) {
-    margin-top: 6vmin;
+    margin-top: 4vmin;
 }
 
 
@@ -1301,14 +1298,14 @@ iframe.instagram-media + script + :not([id]) {
 
 .post-full-content table td:first-child {
     background-image: linear-gradient(to right, rgba(255,255,255, 1) 50%, rgba(255,255,255, 0) 100%);
-    background-size: 20px 100%;
+    background-size: 1.2rem 100%;
     background-repeat: no-repeat;
 }
 
 .post-full-content table td:last-child {
     background-image: linear-gradient(to left, rgba(255,255,255, 1) 50%, rgba(255,255,255, 0) 100%);
     background-position: 100% 0;
-    background-size: 20px 100%;
+    background-size: 1.2rem 100%;
     background-repeat: no-repeat;
 }
 
@@ -1334,14 +1331,15 @@ iframe.instagram-media + script + :not([id]) {
 
 .article-byline {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    margin: 20px 0 0;
 }
 
 .article-byline-content {
     flex-grow: 1;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .article-byline-content .author-list {
@@ -1721,7 +1719,7 @@ iframe.instagram-media + script + :not([id]) {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    margin: 0 0 20px;
+    margin: 0 0 1.2rem;
     padding: 0;
     list-style: none;
 }
